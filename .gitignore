@@ -1,5 +1,14 @@
-!libraries/composer.json
-libraries/*
+libraries/**/
+libraries/autoload.php
+libraries/composer.lock
+
+public/assets/frontend/images/big-slider/**/
+public/assets/frontend/images/articles/**/
+public/assets/frontend/images/agendas/**/*.jpg
+public/assets/frontend/images/team/**/
+public/assets/frontend/images/midia/**/
+public/assets/frontend/images/documents/**/
+public/assets/frontend/images/audios/**/
 
 ### Windows ###
 # Windows image file caches
