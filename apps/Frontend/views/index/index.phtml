@@ -1,0 +1,513 @@
+<!--  BIG SLIDER  -->
+        <section id="home" data-scroll-index="1" class="big-slider">
+            <div class="tp-banner-container">
+                <div class="tp-banner" >
+                    <ul>
+                        <?php foreach( $banners as $banner ): ?>
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-delay="5000" >
+                            <!-- MAIN IMAGE -->
+                            <img src="assets/frontend/images/big-slider/<?=$banner->image;?>" style="background-color:#333;" alt="" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+                            <!-- LAYERS -->
+
+                            <div class="tp-caption sft tp-resizeme rs-parallaxlevel-10"
+                                data-x="center" data-hoffset="0"
+                                data-y="center" data-voffset="-80"
+                                data-start="1500"
+                                data-speed="600"
+                                data-easing="Power3.easeInOut"
+                                data-splitin="none"
+                                data-splitout="none"
+                                data-elementdelay="0.1"
+                                data-endelementdelay="0.1"
+                                data-endspeed="300"
+                                style="font-size:30px;line-height:30px;font-weight:900;color:#fff;text-transform: uppercase;"><?=$banner->phrase_one;?>
+                            </div>
+
+                            <div class="tp-caption sfl fadeout tp-resizeme rs-parallaxlevel-10"
+                                data-x="center" data-hoffset="0"
+                                data-y="center" data-voffset="-15"
+                                data-start="1700"
+                                data-speed="600"
+                                data-easing="Power4.easeOut"
+                                data-splitin="none"
+                                data-splitout="none"
+                                data-elementdelay="0.1"
+                                data-endelementdelay="0.1"
+                                data-endspeed="600"
+                                data-endeasing="Power1.easeOut"
+                                style="font-size:80px;line-height:56px;font-weight:900;color:#e1544d;text-transform: uppercase;"><?=$banner->phrase_two;?>
+                            </div>
+
+                            <div class="tp-caption sfr tp-resizeme rs-parallaxlevel-10"
+                                data-x="center" data-hoffset="0"
+                                data-y="center" data-voffset="65"
+                                data-start="1700"
+                                data-speed="600"
+                                data-easing="Power3.easeInOut"
+                                data-splitin="none"
+                                data-splitout="none"
+                                data-elementdelay="0.1"
+                                data-endelementdelay="0.1"
+                                data-endspeed="300"
+                                style="font-size:80px;line-height:56px;font-weight:900;color:#e1544d;text-transform: uppercase;"><?=$banner->phrase_three;?>
+                            </div>
+
+                            <div class="tp-caption sfb tp-resizeme rs-parallaxlevel-10"
+                                data-x="center" data-hoffset="0"
+                                data-y="center" data-voffset="130"
+                                data-start="2000"
+                                data-speed="600"
+                                data-easing="Power3.easeInOut"
+                                data-splitin="none"
+                                data-splitout="none"
+                                data-elementdelay="0.1"
+                                data-endelementdelay="0.1"
+                                data-endspeed="300"
+                                style="font-size:18px;line-height:18px;color:#fff;"><?=$banner->phrase_four;?>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--  //BIG SLIDER  -->
+
+        <!--  COMUNIDADE  -->
+        <section id="skills" data-scroll-index="2" class="skills">
+           
+            <div class="container"> 
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">a comunidade</div>
+                </div>
+                <!--  //TITLE  -->
+
+                <div class="row">
+
+                    <div class="col-md-10 col-xs-12 center">
+                        <p><img src="/assets/frontend/images/about/1.jpg" class="pull-left" style="padding-right: 14px;"> 
+                        No princípio havia um jovem pastor, proveniente de Curitiba, recém-casado com uma jovem paulistana.Ele, muito alegre, comunicativo, extrovertido, cativante, cheio de paixão por Jesus e de 	compaixão pelos perdidos. Ela, uma moça com um desafio missionário ardendo em seu coração. Este casal, Pr. Carlos Alberto e Pra Suely, foi a semelhança de Abraão e Sara, foram chamados por Deus para construir a família Comunidade da Graça, com o objetivo de abençoar todas as famílias da terra. (Gênesis 12:1-3).</p>
+                    </div>
+                
+                </div><br>
+                
+                <div class="row text-center d-flex space-between">
+                   
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 button-block" data-href="/comunidade/teologia">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-1.png" alt="">
+                            <h3>teologia</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/visao">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-2.png" alt="">
+                            <h3>visão</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/valores">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-3.png" alt="">
+                            <h3>os valores da visão</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/missao">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-4.png" alt="">
+                            <h3>missão</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/familia">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-5.png" alt="">
+                            <h3>a família de deus</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="row text-center d-flex space-between">
+                   
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 button-block" data-href="/comunidade/modelo">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-6.png" alt="">
+                            <h3>modelo ide</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/logo">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-7.png" alt="">
+                            <h3>significado da logo</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/associacao">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-8.png" alt="">
+                            <h3>a associação</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/fundacao">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-9.png" alt="">
+                            <h3>a fundação</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 button-block"  data-href="/comunidade/declaracao">
+                        <div class="block-container x200">
+                            <img src="assets/frontend/images/icon-buttons/icon-btn-10.png" alt="">
+                            <h3>declaração de fé</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--  //COMUNIDADE  -->
+        <!--  COMUNIDADE PASTORES  -->
+        <section id="clients" class="clients">
+            <div class="container">                
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">Pastores</div>
+                </div>
+                <!--  //TITLE  -->
+                <ul id="members_slider">
+                    <?php foreach( $members as $member ): ?>
+                        <li>
+                            <div class="team-block-alt">
+                                <img src="assets/frontend/images/team/<?=$member->image;?>" alt="<?=$member->name;?>" />
+                                <div class="team-block-alt-details">
+                                    <a href="#" class="name"><?=$member->name;?></a>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </section>
+        <!--  //COMUNIDADE PASTORES  -->
+
+        <!--  COMUNIDADE INFO  -->
+        <section id="info" class="info">
+            <div class="container">  
+                
+                <div class="row">
+                    <div class="col-md-4 info-item ">
+                        <h3 class="title"><i class="fa fa-video-camera"></i> culto online </h3>
+                        <embed src="http://38.96.175.106/players/8122/player.swf" wmode="transparent" class="video-embed" />
+                        <a href="#" class="button var2 youtube pull-left"><i class="fa fa-youtube"></i><span>inscreva-se em nosso canal</span></a>
+                    </div>
+                    <div class="col-md-4 info-item ">
+                        
+                        <div class="work full-width">
+                            
+                             <h3 class="title"><i class="fa fa-clock-o"></i>Horários</h3>
+                             
+                             <div class="work-day">
+                                 <h3>Domingos</h3>
+                                 <span>culto da família         <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                                 <span>reunião de adolescentes  <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                                 <span>culto da família         <strong class="pull-right"><i class="fa fa-clock-o"></i> 19 </strong></span>
+                             </div>
+                             
+                             <div class="work-day">
+                                 <h3>Quintas-feiras</h3>
+                                 <span>culto da família         <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                                 <span>reunião de adolescentes  <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                             </div>
+                             
+                             <div class="work-day">
+                                 <h3>Sexta-feira <sup>1</sup> </h3>
+                                 <span>vigília para quem tem sede  <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                             </div>
+                             
+                             <div class="work-day">
+                                 <h3>Sábados <sup>2</sup></h3>
+                                 <span>encontro de jovens  <strong class="pull-right"><i class="fa fa-clock-o"></i> 10 </strong></span>
+                             </div>
+                             
+                             <div class="work-day">
+                                 <h3>&nbsp;</h3>
+                                 <span class="sup"><strong>1</strong> Toda última sexta-feira do mês</span>
+                                 <span class="sup"><strong>2</strong> Exceto no último sábado do mÊs</span>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4 info-item ">
+                        
+                        <div class="offer-wrapper">
+                            <h3 class="offer-title">Faça Aqui Sua <span>Oferta</span>! <hr></h3>
+                            <p class="offer-description">"Aquele que semeia pouco, pouco também ceifará e o que semeia com fartura, com abundância também ceifará." II Coríntios 9:6</p>
+                        </div>
+                        
+                        <div class="newsletter-wrapper">
+                            <div class="head">
+                                <h3 class="newsletter-title" id="newsletter-title">RECEBA NOVIDADES DA CG EM SEU E-MAIL!</h3>
+                                <button class="newsletter-send" id="newsletter-send"><i class="fa fa-send"></i></button>
+                            </div>
+                            <div class="inputs">
+                                <input type="text" id="newsletter-name" class="newsletter-input" placeholder="Nome Completo">
+                                <input type="text" id="newsletter-mail" class="newsletter-input" placeholder="E-Mail">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!--  //COMUNIDADE INFO  -->
+
+        <!--  AGENDA  -->
+        <section id="work" data-scroll-index="3" class="work images-bg">
+            <div class="container"> 
+                <!--  TITLE  -->
+                <div class="title white">
+                    <div class="name">Agenda</div>
+                </div>
+                <!--  //TITLE  -->
+
+                <div class="flexslider">
+                    <ul class="slides">
+                        <?php foreach($agendas as $agenda ): ?>
+                        <li>
+                            <div class="work-block">
+                                <div class="image-wrapper">
+                                    <a href="/assets/frontend/images/agendas/<?=$agenda->image;?>" class="zoom">
+                                        <img src="/assets/frontend/images/agendas/<?=$agenda->image;?>" alt="<?=$agenda->title;?>">
+                                    </a>
+                                </div>
+                                <a href="#" class="name"><?=$agenda->title;?></a>
+                            <div class="position"><?=(new DateTime($agenda->date))->format("d/m/Y \a\s H:i");?></div>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="next-event-button" id="clock" data-date="<?=(new DateTime($nextAgenda->date))->format("Y/m/d H:i:s");?>" data-title="<?=$nextAgenda->title;?>">
+                    <h3>Próximo Evento <small>título do proximo evento</small> </h3>
+                    <span><strong>00</strong> Dias </span>
+                    <span><strong>00</strong> Horas </span>
+                    <span><strong>00</strong> Minutos </span>
+                    <span><strong>00</strong> Segundos </span>
+                </div>
+            </div>
+            <img src="/assets/frontend/images/agendas/bg/1.jpg" alt="">
+        </section>
+        <!--  //AGENDA  -->
+        <!--  MINISTÉRIOS  -->
+        <section id="skills" data-scroll-index="4" class="skills">
+            <div class="container"> 
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">Ministérios</div>
+                </div>
+                <!--  //TITLE  -->
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                       
+                        <?php foreach($ministries as $ministry): ?>
+                        <div class="col-lg-6 col-md-6 col-sm-6 skills-block" data-href="/ministerios/post/<?=$ministry->urlrequest;?>">
+                            <div class="name">
+                                <em class="fa fa-circle"></em>
+                                <?=$ministry->title;?>
+                            </div>
+                            <p><?=substr(strip_tags($ministry->text),0,100);?> ...</p>
+                        </div>
+                        <?php endforeach; ?>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <a href="/ministerios"><button class="button var3 full-width">Todos os Ministérios <i class="fa fa-chevron-right"></i> </button></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 skills-slider">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>                                
+                                    <img src="assets/frontend/images/skills/1.jpg" alt="">
+                                </li>
+                                <li>                                
+                                    <img src="assets/frontend/images/skills/1.jpg" alt="">
+                                </li>
+                                <li>                                
+                                    <img src="assets/frontend/images/skills/1.jpg" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                        <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  //MINISTÉRIOS  -->
+        <!--  EDIFICAÇÃO  -->
+        <section id="clients" class="clients" data-scroll-index="5">
+            <div class="container">                
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">Edificação</div>
+                </div>
+                <!--  //TITLE  -->
+                <div class="row text-center">
+                    <div class="col-md-6 text-left">
+                        
+                        <div class="row">
+                            
+                            <div class="col-md-4 col-sm-12">
+                                <img src="/assets/frontend/images/articles/<?=$article->image;?>" class="img-responsive">
+                            </div>
+                            <div class="col-md-8 col-sm-12">
+                                <h3 style="margin:0;"><?=$article->title;?></h3>
+                                <?=substr($article->text,0,255);?> ... <br><br>
+                                <a href="/artigos/post/<?=$article->urlrequest;?>" class="button var3 full-width">Continue Lendo</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                   
+                    <div class="col-md-6">
+                       
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 button-block" data-href="/artigos">
+                                <div class="block-container" style="height:250px">
+                                    <img src="assets/frontend/images/icon-buttons/icon-btn-11.png" alt="">
+                                    <h3>artigos</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 button-block" data-href="/pedidos">
+                                <div class="block-container" style="height:250px">
+                                    <img src="assets/frontend/images/icon-buttons/icon-btn-15.png" alt="">
+                                    <h3>pedido de oração</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--  //EDIFICAÇÃO  -->
+        <?php if(count($testimonies) > 0): ?>
+        <!--  TESTEMUNHOS  -->
+        <section class="clients-feedback images-bg">
+            <div class="container"> 
+                <div class="clients-feedback-icon">“</div>
+                <div class="flexslider">
+                    <ul class="slides">
+                        <?php foreach($testimonies as $testimony ): ?>
+                        <li>
+                            <p><?=substr($testimony->text,0,255);?>...</p>
+                            <div class="auther"><?=$testimony->author;?></div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <a href="/testemunhos" class="button full-width">Ver Todos Testemunhos</a>
+            <img src="assets/frontend/images/clients/bg/1.jpg" alt="">
+        </section>
+        <!--  //TESTEMUNHOS  -->
+        <?php endif; ?>
+        <!--  MÍDIAS  -->
+        <section data-scroll-index="6" class="skills">
+            <div class="container"> 
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">mídia</div>
+                </div>
+                <!--  //TITLE  -->
+                
+                <div class="row text-center">
+                   
+                    <div class="col-lg-4 col-md-4 col-sm-12 button-block var2" data-href="/midia/albums">
+                        <div class="block-container" style="height:300px">
+                            <i class="fa fa-camera"></i>
+                            <h3>Fotos</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-12 button-block var2" data-href="/midia/videos">
+                        <div class="block-container" style="height:300px">
+                            <i class="fa fa-video-camera"></i>
+                            <h3>Videos</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-12 button-block var2" data-href="/midia/audios">
+                        <div class="block-container" style="height:300px">
+                            <i class="fa fa-volume-up"></i>
+                            <h3>Audios</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--  //MÍDIAS  -->
+        <!--  GCEM  -->
+        <section data-scroll-index="7" class="skills">
+            <div class="container"> 
+                <!--  TITLE  -->
+                <div class="title">
+                    <div class="name">GCEM</div>
+                </div>
+                <!--  //TITLE  -->
+                
+                 <div class="row text-center">
+                    <div class="col-md-4 text-left">
+                        
+                        <h3 class="gcem-title hidden-sm hidden-xs" style="margin: 0 0 -10px -90px;">O que é ?</h3>
+                        <h3 class="gcem-title visible-sm visible-xs" style="text-align:center" >O que é ?</h3>
+                        <p>O GCEM é um grupo que se reúne nos lares, composto de 10 a 15 pessoas no máximo, com a finalidade de promover comunhão e edificação entre os irmãos, e de dar atenção especial aos novos convertidos, culminando com a multiplicação do grupo; ou seja, com a abertura de um novo grupo que será dirigido por alguém que se desenvolveu dentro do próprio GCEM.</p>
+                        <a href="/gcem" class="button var3 full-width">Leia Mais</a>
+                        
+                    </div>
+                   
+                    <div class="col-md-8">
+                        
+                        <div class="row text-center">
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 button-block var3" data-href="/gcem/boletins">
+                                <div class="block-container" style="height:220px">
+                                    <img src="assets/frontend/images/icon-buttons/icon-btn-12.png" alt="">
+                                    <h3>boletins</h3>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 button-block var3" data-href="/gcem/mapa">
+                                <div class="block-container" style="height:220px">
+                                    <img src="assets/frontend/images/icon-buttons/icon-btn-13.png" alt="">
+                                    <h3>gcem mais próximo</h3>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 button-block var3" data-href="/gcem/ctl">
+                                <div class="block-container" style="height:220px">
+                                    <img src="assets/frontend/images/icon-buttons/icon-btn-14.png" alt="">
+                                    <h3>ctl</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+                
+            </div>
+        </section>
+        <!--  //GCEM  -->

@@ -1,0 +1,38 @@
+<div class="login-container">
+
+    <div class="row">
+
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <!-- Add class "fade-in-effect" for login form effect -->
+            <form method="post" action="/admin/login/auth" role="form" id="login" class="login-form fade-in-effect in" accept-charset="UTF-8" autocomplete="off">
+
+                <div class="login-header text-center">
+                    <img src="/assets/Backend/images/logo.png" alt="">
+                </div>
+
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-dark"    name="username" id="username" placeholder="Usuário" />
+                </div>
+
+                <div class="form-group">
+
+                    <input type="password" class="form-control input-dark" name="password" id="password" placeholder="Senha" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-dark  btn-block text-left" id="logmein">
+                        <i class="fa-lock"></i>
+                        Acessar Painel
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<?php $this->flashSession->output(); ?>

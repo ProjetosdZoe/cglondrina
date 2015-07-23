@@ -1,0 +1,63 @@
+<!--  PAGE NAME  -->
+<section class="page-name">
+    <h1>Audios</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="./albums">Albums de fotos</a>
+        <a href="./videos">Videos</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>  
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTEUDO  -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+           
+            <?php foreach( $audios as $audio ): ?>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="blog-block">
+                    <div class="date">
+                        <div class="day"><?=(new DateTime($audio->date))->format("d");?></div>
+                        <div class="other">
+                        <?php 
+                        switch((new DateTime($audio->date))->format("m"))
+                        {
+                            case 1  : $month = "Janeiro"; break;
+                            case 2  : $month = "Fevereiro"; break;
+                            case 3  : $month = "Março"; break;
+                            case 4  : $month = "Abril"; break;
+                            case 5  : $month = "Maio"; break;
+                            case 6  : $month = "Junho"; break;
+                            case 7  : $month = "Julho"; break;
+                            case 8  : $month = "Agosto"; break;
+                            case 9  : $month = "Setembro"; break;
+                            case 10 : $month = "Outubro"; break;
+                            case 11 : $month = "Novembro"; break;
+                            case 12 : $month = "Dezembro"; break;
+
+                        }
+                        echo "{$month}, ".(new DateTime($audio->date))->format("Y");
+                        ?>
+                        </div>
+                    </div>
+                    <div class="contents">
+                        <a class="name uppercase" href="#"><?=$audio->title;?></a>
+                        <audio class="full-width" controls >
+                            <source src="/assets/frontend/audios/<?=$audio->file;?>">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="position"></div>
+                    </div>
+                    <hr>                            
+                </div>
+            </div>
+            <?php endforeach; ?>
+            
+        </div>
+    </div>
+</section>
+<!--  //CONTEUDO  -->

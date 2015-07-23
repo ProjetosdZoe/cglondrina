@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Painel Administrativo" />
+	<meta name="author" content="Hudson Nicoletti" />
+	
+	<title>Painel Administrativo </title>
+
+	<?php echo $this->assets->outputCss(); ?>
+	
+</head>
+    <body class="page-body <?php echo ($this->router->getControllerName() == 'login' ? 'login-page' : '' ); ?>">
+    
+    <?php if($this->router->getControllerName() != 'login'): ?>
+    <nav class="navbar horizontal-menu navbar-fixed-top navbar-minimal"><!-- set fixed position by adding class "navbar-fixed-top" -->
+		
+		<div class="navbar-inner">
+		
+			<!-- Navbar Brand -->
+			<div class="navbar-brand">
+				<a href="/" class="logo">
+					<img src="/assets/Backend/images/logo-alt.png" height="48" alt="" class="hidden-xs" />
+					<img src="/assets/Backend/images/logo-icon.png" height="48" alt="" class="visible-xs" />
+				</a>
+			</div>
+				
+			<!-- Mobile Toggles Links -->
+			<div class="nav navbar-mobile">
+			
+				<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+				<div class="mobile-menu-toggle">
+					<a href="#" data-toggle="mobile-menu-horizontal">
+						<i class="fa-bars"></i>
+					</a>
+				</div>
+				
+			</div>
+			
+			<div class="navbar-mobile-clear"></div>
+			
+			
+			<ul class="navbar-nav">
+                <li>
+                    <a href="/admin/">
+                        <i class="fa-home"></i>
+                        <span class="title">Visão Geral</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/banners">
+                        <i class="fa-image"></i>
+                        <span class="title">Banners</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/pastores">
+                        <i class="fa-users"></i>
+                        <span class="title">Pastores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/agenda">
+                        <i class="fa-calendar"></i>
+                        <span class="title">Agenda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/ministerios">
+                        <i class="fa-bookmark"></i>
+                        <span class="title">Ministérios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/artigos">
+                        <i class="fa-newspaper-o"></i>
+                        <span class="title">Artigos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/testemunhos">
+                        <i class="fa-quote-left"></i>
+                        <span class="title">Testemunhos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-bell"></i>
+                        <span class="title">Mídia</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/admin/midia/fotos">Fotos</a>
+                        </li>
+                        <li>
+                            <a href="/admin/midia/videos">Vídeos</a>
+                        </li>
+                        <li>
+                            <a href="/admin/midia/audios">Audios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-thumb-tack"></i>
+                        <span class="title">GCEM</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/admin/gcem/boletins">Boletins</a>
+                        </li>
+                           <li>
+                            <a href="/admin/gcem/fotos">Fotos</a>
+                        </li>
+                        <li>
+                            <a href="/admin/gcem/ctl">CTL</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+					
+			
+			<!-- notifications and other links -->
+			<ul class="nav nav-userinfo navbar-right">
+                
+				
+				<li class="dropdown user-profile">
+						<a href="#" data-toggle="dropdown">
+							<span>
+								<?=$user->name;?>
+								<i class="fa-angle-down"></i>
+							</span>
+						</a>
+						
+						<ul class="dropdown-menu user-profile-menu list-unstyled">
+							<li>
+								<a href="./settings">
+									<i class="fa-cog"></i>
+									Configurações
+								</a>
+							</li>
+                           
+							<li>
+								<a id="logmeout" href="#">
+									<i class="fa-lock"></i>
+									Logout
+								</a>
+							</li>
+						</ul>
+					</li>
+				
+			</ul>
+	
+		</div>
+		
+	</nav>
+    <?php endif; ?>
+
+    <?php echo $this->getContent(); ?>
+    </body>
+    <?php echo $this->assets->outputJs(); ?>
+	<script type="text/javascript">
+        $(function($){
+            
+            $("#logmeout").click(function(){
+                $.post("login/logout", function(){
+                    window.location = location;
+                });
+                return false;
+            });
+            
+            if( $(".noticeMessage").length  == 1 ){ toastr.info( $(".noticeMessage").find(".msg").text()    , $(".noticeMessage").find(".title").text()  , {"positionClass": "toast-top-full-width"}); }
+            if( $(".errorMessage").length   == 1 ){ toastr.error( $(".errorMessage").find(".msg").text()    , $(".errorMessage").find(".title").text()   , {"positionClass": "toast-top-full-width"}); }
+            if( $(".successMessage").length == 1 ){ toastr.success( $(".successMessage").find(".msg").text(), $(".successMessage").find(".title").text() , {"positionClass": "toast-top-full-width"}); }
+            
+            
+            function readURL(input, element) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $(element).attr('src', e.target.result);
+                    }
+                reader.readAsDataURL(input.files[0]);
+                }
+            }   
+
+	        $("img.preview_img").hide();
+            $("input[type='file']").change(function() {
+                    
+                   $("[data-resize]").each(function(){
+                       $(this).removeClass().addClass('col-md-'+$(this).data("resize"));
+                   });
+                
+                   $("img.preview_img").show();
+                   readURL(this, "img.preview");
+            });
+            
+            $("#search_tbl").filtr({
+                target : "#table",
+                targetChild : "tbody tr"
+            });
+            
+            $("#search_wdg").filtr({
+                target : "ul#list-unstyled",
+                targetChild : "li"
+            });
+            
+        });
+    </script>
+
+</html>

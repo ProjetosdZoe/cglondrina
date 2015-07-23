@@ -1,0 +1,197 @@
+<div class="page-container">
+
+    <div class="main-content">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="/admin/artigos/adicionar/">
+                    <button class="btn btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-plus"></i><span>Adicionar Artigo</span></button>
+                </a>
+            </div>
+            
+            <div class="col-md-12">
+					
+					<ul class="nav nav-tabs nav-tabs-justified">
+						<li class="active">
+							<a href="#articles" data-toggle="tab">
+								<span class="visible-xs"><i class="fa-home"></i></span>
+								<span class="hidden-xs">Artigos</span>
+							</a>
+						</li>
+						<li>
+							<a href="#categories" data-toggle="tab">
+								<span class="visible-xs"><i class="fa-tag"></i></span>
+								<span class="hidden-xs">Categorias de Artigos</span>
+							</a>
+						</li>
+					</ul>
+					
+					<div class="tab-content">
+						<div class="tab-pane active" id="articles">
+							
+							<div class="row">
+                            
+                                <div class="col-sm-12">
+
+                                    <div class="xe-widget xe-conversations">
+                                        <div class="xe-bg-icon">
+                                            <i class="fa-newspaper-o"></i>
+                                        </div>
+                                        <div class="xe-header">
+                                            <div class="xe-icon">						
+                                                <i class="fa-newspaper-o"></i>
+                                            </div>
+                                            <div class="xe-label">
+                                                <h3>
+                                                    Artigos
+                                                    <small>Artigos cadastradas</small>
+                                                </h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="xe-body">
+                                            <input type="text" class="form-control form-focus-info full-width" id="search_wdg" placeholder="Search ... ">
+                                            <ul class="list-unstyled" id="list-unstyled">
+
+                                                <?php foreach($articles as $article): ?>
+                                                <li>
+                                                    <div class="xe-comment-entry">
+                                                        <a href="/admin/artigos/editar/<?=$article->_;?>" class="xe-user-img">
+                                                            <img src="/assets/frontend/images/articles/<?=$article->image;?>" class="img-circle" width="100" height="100">
+                                                        </a>
+                                                        <div class="xe-comment"> 
+
+                                                            <div class="col-md-9">
+                                                                <a href="/admin/artigos/editar/<?=$article->_;?>" class="xe-user-name"> 
+                                                                    <strong><?=$article->title;?></strong>
+                                                                </a>
+                                                                <div class="form-group inline">
+                                                                    <span class="badge badge-primary" style="font-size: 12px">
+                                                                        <i class="fa-clock-o"></i> <?=(new DateTime($article->date))->format("d/m/Y \a\s H:i");?>
+                                                                    </span>
+                                                                    <span class="badge badge-primary" style="font-size: 12px">
+                                                                        <i class="fa-tag"></i> <?=$article->category_name;?>
+                                                                    </span>
+                                                                </div>
+                                                                <p><?=substr($article->text,0,255);?>...</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <a href="/admin/artigos/remover/<?="{$article->_}/{$csrf}";?>">
+                                                                    <button class="btn btn-danger btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-close"></i><span>Remover</span></button>
+                                                                </a>
+                                                                <a href="/admin/artigos/editar/<?=$article->_;?>">
+                                                                    <button class="btn btn-info btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-pencil"></i><span>Alterar</span></button>
+                                                                </a>
+                                                            </div>
+
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <?php endforeach; ?>
+
+                                            </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+							    
+							</div>
+							
+						</div>
+						<div class="tab-pane" id="categories">
+                       
+                          <div class="row">
+                            
+                                <div class="col-sm-12">
+
+                                    <div class="xe-widget xe-conversations">
+                                        <div class="xe-bg-icon">
+                                            <i class="fa-tag"></i>
+                                        </div>
+                                        <div class="xe-header">
+                                            <div class="xe-icon">						
+                                                <i class="fa-tag"></i>
+                                            </div>
+                                            <div class="xe-label">
+                                                <h3>
+                                                    Categorias de Artigos
+                                                    <small>Categorias cadastradas</small>
+                                                </h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="xe-body">
+                                            
+                                            <form action="/admin/artigos/nwc" method="post" accept-charset="UTF-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control no-right-border form-focus-success" name="title">
+                                                    <input type="hidden" name="csrf" value="<?=$csrf;?>">
+                                                    <span class="input-group-btn"> <button class="btn btn-success" type="submit">Adicionar <small><i class="fa fa-plus"></i></small> </button> </span>
+                                                </div>
+                                            </form>
+                                            <ul class="list-unstyled" id="list-unstyled">
+
+                                                <?php foreach($categories as $category): ?>
+                                                <li>
+                                                    <div class="xe-comment-entry">
+                                                        <div class="xe-comment"> 
+
+                                                            <div class="col-md-9">
+                                                                <a href="/admin/artigos/editar/<?=$category->_;?>" class="xe-user-name"> 
+                                                                    <strong><?=$category->name;?></strong>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <a href="#" data-modal="/admin/request/rmc" data-ide="<?=$category->_;?>" data-modal-rmc="<?=$category->_;?>">
+                                                                    <button class="btn btn-danger btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-close"></i><span>Remover</span></button>
+                                                                </a>
+                                                                <a href="#" data-modal="/admin/request/edc" data-ide="<?=$category->_;?>" data-modal-edc="<?=$category->_;?>" >
+                                                                    <button class="btn btn-info btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-pencil"></i><span>Alterar</span></button>
+                                                                </a>
+                                                            </div>
+
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <?php endforeach; ?>
+
+                                            </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+							    
+							</div>
+                           
+                        </div>
+					</div>
+					
+					
+				</div>
+            
+			</div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Atenção !</h4>
+            </div>
+
+            <div id="result">
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+<?php $this->flashSession->output(); ?>

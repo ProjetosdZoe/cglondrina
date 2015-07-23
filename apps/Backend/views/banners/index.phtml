@@ -1,0 +1,43 @@
+<div class="page-container">
+
+    <div class="main-content">
+            
+            <div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">Banners Cadastrados</h1>
+					<p class="description">Todos os Banners Cadastrados</p>
+				</div>
+				
+				<div class="breadcrumb-env">
+					<a href="/admin/banners/adicionar"><button class="btn btn-success btn-lg">Novo Banner</button></a>
+				</div>
+					
+			</div>
+
+            <div class="row">
+
+                <?php foreach($banners as $banner): ?>
+                <div class="col-md-3 col-sm-6">
+                   
+                    <figure>
+                        <img src="/assets/frontend/images/big-slider/<?=$banner->image;?>" class="full-width" height="210">
+                        <span class="full-width">
+                            <?="{$banner->phrase_one} {$banner->phrase_two} {$banner->phrase_three} {$banner->phrase_four}";?>
+                        </span>
+                    </figure>
+                    <a href="./banners/editar/<?=$banner->_;?>">
+                        <button class="btn btn-info btn-icon btn-icon-standalone btn-lg"><i class="fa-pencil"></i><span>Editar</span></button>
+                    </a>
+                    <a href="./banners/remover/<?="{$banner->_}/{$csrf}";?>">
+                        <button class="btn btn-danger btn-icon btn-icon-standalone btn-lg pull-right"><i class="fa-close"></i><span>Remover</span></button>
+                    </a>
+                    
+                 </div>
+                <?php endforeach; ?>
+            </div>
+
+    </div>
+
+</div>
+<?php $this->flashSession->output(); ?>

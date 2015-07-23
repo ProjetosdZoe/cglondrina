@@ -1,0 +1,60 @@
+<!--  PAGE NAME  -->
+<section class="page-name" data-scroll-index="1">
+    <h1>Boletins</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="/gcem">Sobre o GCEM</a>
+        <a href="/gcem/mapa">gcem mais próximo</a>
+        <a href="/gcem/ctl">ctl</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>  
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTENT -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+
+           <?php foreach( $newsletters as $newsletter ): ?>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="blog-block">
+                    <div class="date">
+                        <div class="day"><?=(new DateTime($newsletter->date))->format("d");?></div>
+                        <div class="other">
+                        <?php 
+                        switch((new DateTime($newsletter->date))->format("m"))
+                        {
+                            case 1  : $month = "Janeiro"; break;
+                            case 2  : $month = "Fevereiro"; break;
+                            case 3  : $month = "Março"; break;
+                            case 4  : $month = "Abril"; break;
+                            case 5  : $month = "Maio"; break;
+                            case 6  : $month = "Junho"; break;
+                            case 7  : $month = "Julho"; break;
+                            case 8  : $month = "Agosto"; break;
+                            case 9  : $month = "Setembro"; break;
+                            case 10 : $month = "Outubro"; break;
+                            case 11 : $month = "Novembro"; break;
+                            case 12 : $month = "Dezembro"; break;
+
+                        }
+                        echo "{$month}, ".(new DateTime($newsletter->date))->format("Y");
+                        ?>
+                        </div>
+                    </div>
+                    <div class="contents">
+                        <a class="name uppercase" href="/assets/frontend/documents/<?=$newsletter->file;?>" target="_blank"><?=$newsletter->title;?></a>
+                        <div class="position"></div>
+                    </div><a class="button full-width" href="/assets/frontend/documents/<?=$newsletter->file;?>" target="_blank">Ver Boletim</a>
+                    <hr>                            
+                </div>
+            </div>
+            <?php endforeach; ?>
+            
+        </div>
+    </div>
+</section>
+<!--  //CONTENT  -->

@@ -1,0 +1,79 @@
+<div class="page-container">
+
+    <div class="main-content">
+           
+           <form action="/admin/banners/criar" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+            
+                <div class="page-title">
+
+                    <div class="title-env">
+                        <h1 class="title">Cadastre um banner</h1>
+                        <p class="description">Cadastre um novo banner para página inicial.</p>
+                    </div>
+
+                    <div class="breadcrumb-env">
+                        <button class="btn btn-success btn-lg" type="submit" name="submit"> Cadastrar </button>
+                        <?=$form->render('csrf');?>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-10">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Frase #1</strong></label>
+                                       <?=$form->render('phrase_one');?>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Frase #2</strong></label>
+                                       <?=$form->render('phrase_two');?>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Frase #3</strong></label>
+                                       <?=$form->render('phrase_three');?>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Frase #4</strong></label>
+                                       <?=$form->render('phrase_four');?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Imagem de Destaque</strong></label>
+                                       <?=$form->render('file');?>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                            
+                        <div class="col-sm-2">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Modelo do Banner:</strong></label>
+                                        <img src="/assets/backend/images/banner-modal.jpg" alt="" class="img-responsive img-thumbnail">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+                
+            
+            </form>
+
+    </div>
+
+</div>
+
+<?php $this->flashSession->output(); ?>

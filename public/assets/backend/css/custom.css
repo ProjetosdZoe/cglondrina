@@ -1,0 +1,51 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {	
+}
+
+a {
+}
+
+.full-width{
+    width: 100%;
+}
+
+figure {
+    position: relative;
+}
+
+figure span{
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+/*
+tr:hover td{
+    color: #111111;
+    background-color: rgba(122,195,62,0.5) !important;
+}
+*/
+
+.noticeMessage{
+    display: none;
+}
+.errorMessage{
+    display: none;
+}
+.successMessage{
+    display: none;
+}
+
+.toast {
+    opacity: 1 !important;
+}

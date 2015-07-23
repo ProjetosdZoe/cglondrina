@@ -1,0 +1,52 @@
+<div class="page-container">
+
+    <div class="main-content">
+           
+        <form action="/admin/ministerios/alterar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+            
+            <div class="page-title">
+
+                <div class="title-env">
+                    <h1 class="title">Altere um Ministério</h1>
+                    <p class="description">Altere as informações do Ministério.</p>
+                </div>
+
+                <div class="breadcrumb-env">
+                    <button class="btn btn-success btn-lg" type="submit" name="submit"> Alterar </button>
+                    <?=$form->render('csrf');?>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                               <label class="control-label"><strong>Título</strong></label>
+                               <?=$form->render('title');?>
+                            </div>
+                            <div class="form-group">
+                               <label class="control-label"><strong>Descrição</strong></label>
+                               <?=$form->render('text');?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+                
+            
+        </form>
+
+    </div>
+
+</div>
+
+
+<?php $this->flashSession->output(); ?>

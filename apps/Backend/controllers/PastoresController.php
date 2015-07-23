@@ -1,0 +1,180 @@
+<?php
+
+namespace Backend\Controllers;
+
+use Backend\Models\Members as Members;
+
+use Phalcon\Forms\Form,
+    Phalcon\Forms\Element\Text,
+    Phalcon\Forms\Element\File,
+    Phalcon\Forms\Element\Hidden;
+
+class PastoresController extends ControllerBase
+{
+    # CHECK IF: SESSION IS OK , IS POST , CSRF TOKEN ( Cross-Site Request Forgery )
+
+    public function indexAction()
+    {
+        
+        $members = Members::find();
+        $this->view->setVar('members', $members);
+        $this->view->setVar('csrf', $this->csrf->token);
+
+    }
+    
+    public function adicionarAction()
+    {
+        
+        $form = new Form();
+        
+            $form->add(new Text("name" ,[
+                'placeholder'           => "Nome Completo",
+                'class'                 => "form-control",
+                'id'                    => "name",
+                'data-validate'         => "required",
+                'data-message-required' => "* Este campo é obrigatório.",
+            ]));
+        
+            $form->add(new Hidden("csrf" ,[
+                'id'                    => "csrf",
+                'value'                 => $this->session->get("CSRFToken")
+            ]));
+
+            $form->add(new File("file" ,[
+                'accept'    => "image/x-png, image/jpeg",
+                'class'     => "form-control",
+                'id'        => "file",
+                'data-validate'         => "required",
+                'data-message-required' => "* Este campo é obrigatório.",
+            ]));
+        
+        $this->view->setVar('form', $form);
+        
+    }
+    
+    public function editarAction()
+    {
+        $member = Members::findFirst($this->dispatcher->getParam(0));
+        
+        $form = new Form();
+        
+            $form->add(new Text("name" ,[
+                'placeholder'           => "Nome Completo",
+                'class'                 => "form-control",
+                'id'                    => "name",
+                'data-validate'         => "required",
+                'data-message-required' => "* Este campo é obrigatório.",
+                'value'                 => $member->name
+            ]));
+        
+            $form->add(new Hidden("csrf" ,[
+                'id'                    => "csrf",
+                'value'                 => $this->session->get("CSRFToken")
+            ]));
+
+            $form->add(new File("file" ,[
+                'accept'    => "image/x-png, image/jpeg",
+                'class'     => "form-control",
+                'id'        => "file",
+            ]));
+        
+        $this->view->setVar('form', $form);
+        $this->view->setVar('image', $member->image);
+        
+    }
+    
+    public function criarAction()
+    {
+        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->request->getPost('csrf') === $this->session->get("CSRFToken") ):
+            
+            switch($this->request->getUploadedFiles()[0]->getError()){
+                case 1 : $e_message = "O arquivo enviado é muito grande!";  break;
+                case 2 : $e_message = "O arquivo enviado é muito grande!";  break;
+                case 3 : $e_message = "O arquivo não foi enviado corretamente!";  break;
+                case 4 : $e_message = "Nenhum arquivo foi enviado!";  break;
+            }
+            
+            if( $this->request->getUploadedFiles()[0]->getError() != 0 ){
+                
+                $this->flashSession->error("<div class='title'>ERRO AO CADASTRAR !</div> <div class='msg'>{$e_message}</div> ");
+                return $this->response->redirect("admin/pastores/adicionar");
+                
+            }
+            else{
+                
+                foreach($this->request->getUploadedFiles() as $file){
+                    $filename = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ_".time()), 0, 12).'.'.$file->getExtension();
+                    $file->moveTo("{$_SERVER['DOCUMENT_ROOT']}/public/assets/frontend/images/team/{$filename}");
+                }
+                
+                $member = new Members;
+                    $member->image  = $filename;
+                    $member->name   = $this->request->getPost("name");
+                $member->save();
+
+                $this->flashSession->success("<div class='title'>CADASTRADO COM SUCESSO !</div> <div class='msg'>Pastor cadastrado com sucesso !</div> ");
+                return $this->response->redirect("admin/pastores");
+            }
+            
+        else:
+            return $this->response->redirect("admin/pastores");
+        
+        endif;
+        
+    }
+    
+    public function alterarAction()
+    {
+        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->request->getPost('csrf') === $this->session->get("CSRFToken") ):
+            
+                $member = Members::findFirst($this->dispatcher->getParam(0));
+                    $member->name = $this->request->getPost("name");
+                        
+                    if ($this->request->getUploadedFiles()[0]->getError() == 0)
+                    {
+                        unlink("{$_SERVER['DOCUMENT_ROOT']}/public/assets/frontend/images/team/{$member->image}");
+
+                        foreach ($this->request->getUploadedFiles() as $file){
+                            $filename = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ_".time()), 0, 12).'.'.$file->getExtension();
+                            $file->moveTo("{$_SERVER['DOCUMENT_ROOT']}/public/assets/frontend/images/team/{$filename}");
+                        }
+
+                        $member->image = $filename;
+                    }
+                    else
+                    {
+                        $member->image = $member->image;
+                    }
+
+                $member->update();
+
+                $this->flashSession->success("<div class='title'>ALTERADO COM SUCESSO !</div> <div class='msg'>Pastor alterado com sucesso !</div> ");
+                return $this->response->redirect("admin/pastores");
+            
+        else:
+            return $this->response->redirect("admin/pastores");
+        
+        endif;
+        
+    }
+    
+    public function removerAction()
+    {
+        if ( $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->dispatcher->getParam(1) === $this->session->get("CSRFToken") ):
+        
+            $member = Members::findFirst( $this->dispatcher->getParam(0) );
+
+                unlink("{$_SERVER['DOCUMENT_ROOT']}/public/assets/frontend/images/team/{$member->image}");
+
+            $member->delete();
+
+            $this->flashSession->success("<div class='title'>REMOVIDO COM SUCESSO !</div> <div class='msg'>Pastor removido com sucesso !</div> ");
+            return $this->response->redirect("admin/pastores");
+        
+        else:
+            return $this->response->redirect("admin/pastores");
+        
+        endif;
+    }
+
+}

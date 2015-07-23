@@ -1,0 +1,54 @@
+<!--  PAGE NAME  -->
+<section class="page-name">
+    <h1>Fotos</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="/midia/albums">Albums de fotos</a>
+        <a href="/midia/videos">Videos</a>
+        <a href="/midia/audios">Audios</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>  
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTEUDO  -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="work-title center uppercase">
+                    <div class="name"><?=$title;?></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+           
+           <?php foreach( $images as $image ): ?>
+                <div class="work-block col-md-3">
+                    <div class="image-wrapper">
+                        <a href="/assets/frontend/images/midia/<?=$image->image;?>" class="zoom">
+                            <img src="/assets/frontend/images/midia/<?=$image->image;?>" alt="">
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; if( count($images) <= 0 ): ?>
+            
+                <div class="col-md-12">
+
+                    <div class="work-title center">
+                       <h3>Ainda Não Foram Cadastradas Fotos Para Este Album.</h3>
+                    </div>
+
+                </div>
+            
+            <?php endif; ?>
+
+            
+        </div>
+    </div>
+</section>
+<!--  //CONTEUDO  -->

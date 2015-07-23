@@ -1,0 +1,114 @@
+<!--  PAGE NAME  -->
+<section class="page-name" data-scroll-index="1">
+    <h1>artigos</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="/testemunhos">testemunhos</a>
+        <a href="/pedidos">pedidos de oração</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  ARTICLES LIST  -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12">
+            <?php foreach( $articles as $id => $article ): ?>
+                <div class="blog-block" data-news-block >
+                    <div class="date">
+                        <div class="day"><?=(new DateTime($article->date))->format("d");?></div>
+                        <div class="other">
+                        <?php
+                        switch((new DateTime($article->date))->format("m"))
+                        {
+                            case 1  : $month = "Janeiro"; break;
+                            case 2  : $month = "Fevereiro"; break;
+                            case 3  : $month = "Março"; break;
+                            case 4  : $month = "Abril"; break;
+                            case 5  : $month = "Maio"; break;
+                            case 6  : $month = "Junho"; break;
+                            case 7  : $month = "Julho"; break;
+                            case 8  : $month = "Agosto"; break;
+                            case 9  : $month = "Setembro"; break;
+                            case 10 : $month = "Outubro"; break;
+                            case 11 : $month = "Novembro"; break;
+                            case 12 : $month = "Dezembro"; break;
+                        }
+                        echo "{$month}, ".(new DateTime($article->date))->format("Y");
+                        ?>
+                        </div>
+                    </div>
+                    <img src="/assets/frontend/images/articles/<?=$article->image;?>" alt="">
+                    <a class="name" href="/artigos/post/<?=$article->urlrequest;?>"><?=$article->title;?></a>
+                    <div class="position"><?=$article->category_name;?></div>
+                    <?=substr($article->text,0,255);?> ...
+                    <div class="clearfix">
+                        <a class="pull-left read-more" href="/artigos/post/<?=$article->urlrequest;?>">
+                            <em class="fa fa-chevron-right"></em>
+                            Continue Lendo
+                        </a>
+                    </div>
+                    <hr>
+                </div>
+            <?php endforeach; ?>
+
+                <div data-news-results ></div>
+                <button class="button var3 full-width" data-news-fetch > Carregar Mais Notícias </button>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="blog-menu">
+                    <div class="input-group">
+                        <input placeholder="Pesquise ..." type="text" class="form-control" data-search >
+                        <span class="input-group-btn">
+                            <button class="btn btn-default fa fa-search" type="button"></button>
+                        </span>
+                    </div><!-- /input-group -->
+                    <nav>
+                        <?php foreach( $categories as $category ): ?>
+                        <a href="#" data-search-filter="<?=$category->name;?>" ><?=$category->name;?></a>
+                        <?php endforeach; ?>
+                    </nav>
+                </div>
+
+                <div class="mini-post">
+                    <a href="#" class="name">NOTÍCIAS MAIS LIDAS</a>
+                </div>
+                <?php foreach( $topviews as $article ): ?>
+                <div class="mini-post">
+                    <img src="/assets/frontend/images/articles/<?=$article->image;?>" alt="">
+                    <a href="#" class="name"><?=$article->title;?></a>
+                    <div class="mini-post-details">
+                        <div class="date">
+                        <?php
+                        switch((new DateTime($article->date))->format("m"))
+                        {
+                            case 1  : $month = "Janeiro"; break;
+                            case 2  : $month = "Fevereiro"; break;
+                            case 3  : $month = "Março"; break;
+                            case 4  : $month = "Abril"; break;
+                            case 5  : $month = "Maio"; break;
+                            case 6  : $month = "Junho"; break;
+                            case 7  : $month = "Julho"; break;
+                            case 8  : $month = "Agosto"; break;
+                            case 9  : $month = "Setembro"; break;
+                            case 10 : $month = "Outubro"; break;
+                            case 11 : $month = "Novembro"; break;
+                            case 12 : $month = "Dezembro"; break;
+                        }
+                        echo (new DateTime($article->date))->format("d")." de {$month}, ".(new DateTime($article->date))->format("Y");
+                        ?>
+                        </div>
+                        <div class="comments"><?=$article->views;?> Leitores</div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  //ARTICLES LIST  -->

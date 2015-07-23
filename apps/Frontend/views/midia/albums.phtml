@@ -1,0 +1,64 @@
+<!--  PAGE NAME  -->
+<section class="page-name">
+    <h1>Albuns de Fotos</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="./videos">Videos</a>
+        <a href="./audios">Audios</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>  
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTEUDO  -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+           
+            <?php foreach( $albums as $album ): ?>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="blog-block">
+                    <div class="date">
+                        <div class="day"><?=(new DateTime($album->date))->format("d")?></div>
+                        <div class="other">
+                        <?php 
+                        switch((new DateTime($album->date))->format("m"))
+                        {
+                            case 1  : $month = "Janeiro"; break;
+                            case 2  : $month = "Fevereiro"; break;
+                            case 3  : $month = "Março"; break;
+                            case 4  : $month = "Abril"; break;
+                            case 5  : $month = "Maio"; break;
+                            case 6  : $month = "Junho"; break;
+                            case 7  : $month = "Julho"; break;
+                            case 8  : $month = "Agosto"; break;
+                            case 9  : $month = "Setembro"; break;
+                            case 10 : $month = "Outubro"; break;
+                            case 11 : $month = "Novembro"; break;
+                            case 12 : $month = "Dezembro"; break;
+
+                        }
+                        echo "{$month}, ".(new DateTime($album->date))->format("Y");
+                        ?>
+                        </div>
+                    </div>
+                    <img src="/assets/frontend/images/midia/<?=$album->image;?>" alt="">
+                    <a class="name uppercase" href="#"><?=$album->title;?></a>
+                    <div class="position"></div>
+                    <div class="clearfix">
+                        <a class="pull-left button var3 full-width" href="./album/<?=$album->urlrequest;?>">
+                            Visualisar Album
+                            <em class="fa fa-chevron-right"></em>
+                        </a>
+                    </div>
+                    <hr>                            
+                </div>
+            </div>
+            <?php endforeach; ?>
+            
+        </div>
+    </div>
+</section>
+<!--  //CONTEUDO  -->

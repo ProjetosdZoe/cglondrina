@@ -1,0 +1,36 @@
+<!--  PAGE NAME  -->
+<section class="page-name" data-scroll-index="1">
+    <h1>Ministérios</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <span>Ministérios</span>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTENT -->
+<section class="blog-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <?php foreach( $ministries as $ministry ): ?>
+                <div class="blog-block" style="padding-left:0;">
+                    <a class="name" href="/ministerios/post/<?=$ministry->urlrequest;?>"><?=$ministry->title;?></a>
+                    <?=substr($ministry->text,0,255);?> ...
+                    <div class="clearfix">
+                        <a class="pull-left read-more" href="/ministerios/post/<?=$ministry->urlrequest;?>">
+                            <em class="fa fa-chevron-right"></em>
+                            Continue Lendo
+                        </a>
+                    </div>
+                    <hr>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  //CONTENT  -->

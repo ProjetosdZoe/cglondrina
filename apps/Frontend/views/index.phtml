@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Painel Administrativo" />
+	<meta name="author" content="Hudson Nicoletti" />
+	
+	<title>Comunidade da Graça em Londrina</title>
+
+	<?php echo $this->assets->outputCss(); ?>
+	
+</head>
+    <body class="home-page">
+    
+    <!--  PRELOADER  -->
+    <div id="preloader">
+        <svg class="circle-loader" width="40" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	        <circle cx="20" cy="20" r="15">
+        </svg>
+    </div>    
+    <!--  //PRELOADER  -->
+    
+    <div class="page-wrapper">
+        <!--  HEADER  -->
+        <header class="header">
+            <div class="container">  
+                <!--  MENU  -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!--  LOGO  -->
+                            <a class="navbar-brand logo-name" href="index.html" data-scroll-nav="1">
+                                <img src="/assets/frontend/images/logo.png" alt="logo" class="hidden-inline-block-sm">
+                                <img src="/assets/frontend/images/logo-small.png" alt="logo" class="visible-inline-block-sm">
+                            </a>
+                            <!--  //LOGO  -->
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">                                
+                                <li class="active">
+                                    <a href="/" <?=($this->router->getControllerName() == 'index' ? 'data-scroll-nav="1"' : '' ); ?>>home<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <?php if($this->router->getControllerName() == 'index' ): ?>
+                                <li>
+                                    <a href="/" data-scroll-nav="2" >a comunidade<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <li>
+                                    <a href="/" data-scroll-nav="3" >agenda<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <li>
+                                    <a href="/" data-scroll-nav="4" >ministérios<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <li>
+                                    <a href="/" data-scroll-nav="5" >edificação<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <li>
+                                    <a href="/" data-scroll-nav="6" >Mídia<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <li>
+                                    <a href="/" data-scroll-nav="7" >GCEM<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                                <?php endif; ?>
+                                <li>
+                                    <a href="/" data-scroll-nav="8">Contato<span class="navbar-link-bg"><span></span></span></a>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>                
+                <!--  //MENU  -->
+            </div>
+        </header>
+        <!--  //HEADER  -->
+        
+    </div>
+
+    <?php echo $this->getContent(); ?>
+    
+    <!--  CONTATO  -->
+        <section id="contact" data-scroll-index="8" class="contact images-bg">
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="contact-info">
+                            <em class="fa fa-map-marker"></em>
+                            <div class="name">LOCALIZAÇÃO</div>
+                            <p>Av. Rio Branco, 141 <br> Londrina - PR</p>
+                        </div>
+                        <div class="contact-info">
+                            <em class="fa fa-phone"></em>
+                            <div class="name">TELEFONE</div>
+                            <p>(43) 3338-3862</p>
+                        </div>
+                        <div class="contact-info">
+                            <em class="fa fa-envelope-o"></em>
+                            <div class="name">E-MAIL</div>
+                            <p>alezachi@cglondrina.com.br <br> secretaria@cglondrina.com.br</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <form id="ajax-contact-form" action="javascript:void(0);">
+                            <input type="text" name="name" placeholder="Name">
+                            <input type="text" name="email" placeholder="E-mail">
+                            <input type="text" name="phone" placeholder="Telefone">
+                            <div class="row">
+                                <div class="col-lg-9 col-md-8 col-sm-9">
+                                    <textarea name="message" placeholder="Mensagem"></textarea>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-3">
+                                    <a href="#" class="button"><span>envie sua<br>mensagem<br>agora</span></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="#" data-scroll-nav="1" class="move-up">
+                    <span class="fa fa-angle-left"></span>
+                </a>
+                
+            </div>
+            <img src="/assets/frontend/images/contact/1.jpg" alt="">
+        </section>
+        <!--  //CONTATO  -->
+
+        <!--  FOOTER  -->
+        <section class="footer">
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <p>Todos os direitos reservados &copy; , Comunidade da Graça em Londrina </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <a href="https://www.agenciadzoe.com.br"><img src="https://www.agenciadzoe.com.br/images/logo.png" alt="Desenvolvimento: Agência dZoë" height="26"></a>
+                        <a href="#" class="fa fa-youtube"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  //FOOTER  -->
+    
+    </body>
+    
+    <?php echo $this->assets->outputJs(); ?>
+    <script>
+    function initialize() {
+        var mapOptions = {
+          center: { lat: -23.300162, lng: -51.174212},
+          zoom: 18
+        };
+        var map = new google.maps.Map(document.getElementById('googleMap'),mapOptions);
+        var marker = new google.maps.Marker({
+            position: { lat: -23.300162, lng: -51.174212},
+            map: map,
+            title: 'Hello World!'
+        });
+      }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+</html>

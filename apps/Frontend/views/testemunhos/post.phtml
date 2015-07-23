@@ -1,0 +1,109 @@
+<!--  PAGE NAME  -->
+<section class="page-name">
+    <h1>testemunhos</h1>
+    <div class="bread-crumbs uppercase">
+        <a href="/">Home</a>
+        <a href="/artigos">artigos</a>
+        <a href="/testemunhos">testemunhos</a>
+        <a href="/pedidos">pedidos de oração</a>
+    </div>
+    <div class="image-wrapper images-bg">
+        <img alt="" src="/assets/frontend/images/secondary-page/1.jpg">
+    </div>
+</section>
+<!--  //PAGE NAME  -->
+
+<!--  CONTEUDO  -->
+<section class="blog-list single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="blog-block">
+                            <div class="date">
+                                <div class="day"><?=(new DateTime($testimony->date))->format("d");?></div>
+                                <div class="other">
+                                <?php
+                                switch((new DateTime($testimony->date))->format("m"))
+                                {
+                                    case 1  : $month = "Janeiro"; break;
+                                    case 2  : $month = "Fevereiro"; break;
+                                    case 3  : $month = "Março"; break;
+                                    case 4  : $month = "Abril"; break;
+                                    case 5  : $month = "Maio"; break;
+                                    case 6  : $month = "Junho"; break;
+                                    case 7  : $month = "Julho"; break;
+                                    case 8  : $month = "Agosto"; break;
+                                    case 9  : $month = "Setembro"; break;
+                                    case 10 : $month = "Outubro"; break;
+                                    case 11 : $month = "Novembro"; break;
+                                    case 12 : $month = "Dezembro"; break;
+                                }
+                                echo "{$month}, ".(new DateTime($testimony->date))->format("Y");
+                                ?>
+                                </div>
+                            </div>
+                            <a class="name"><?=$testimony->title;?></a>
+                            <div class="position">Enviado Por: <?=$testimony->author;?></div>
+                            <?=$testimony->text;?>   
+                            <div class="soc-button">
+                                <span class="pull-left">Compartilhe !</span>
+                                <a href="#" class="fa fa-google"></a>
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </div>                       
+                        </div>
+                        <div class="comments-feed">
+                            <div class="small-title"><?=count($comments);?> Comentários</div>
+                            <?php foreach($comments as $comment): ?>
+                            <div class="comment">
+                                <div class="comments-details">
+                                    <div class="about-auther">
+                                        <a href="#" class="name pull-left"><?=$comment->name;?> :</a>
+                                        <div class="date pull-right">
+                                        <?php
+                                        switch((new DateTime($comment->date))->format("m"))
+                                        {
+                                            case 1  : $month = "Janeiro"; break;
+                                            case 2  : $month = "Fevereiro"; break;
+                                            case 3  : $month = "Março"; break;
+                                            case 4  : $month = "Abril"; break;
+                                            case 5  : $month = "Maio"; break;
+                                            case 6  : $month = "Junho"; break;
+                                            case 7  : $month = "Julho"; break;
+                                            case 8  : $month = "Agosto"; break;
+                                            case 9  : $month = "Setembro"; break;
+                                            case 10 : $month = "Outubro"; break;
+                                            case 11 : $month = "Novembro"; break;
+                                            case 12 : $month = "Dezembro"; break;
+                                        }
+                                        echo (new DateTime($comment->date))->format("d")." de {$month}, ".(new DateTime($comment->date))->format("Y H:i:s");
+                                        ?></div>
+                                    </div>
+                                    <p><?=$comment->comment;?></p>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="add-comment">
+                            <div class="small-title">Deixe um Comentário:</div>
+                            <form data-comment-type="2" data-comment-article="<?=$this->dispatcher->getParam(0);?>">
+                                <div>
+                                    <label for="commentName">Nome Completo</label>
+                                    <input id="commentName" type="text" name="name">
+                                </div>
+                                <div>
+                                    <label for="commentMail">E-mail</label>
+                                    <input id="commentMail" type="text" name="email">
+                                </div>
+                                <div>
+                                    <label for="commentMessage">Comentário</label>
+                                    <textarea id="commentMessage" name="message"></textarea>
+                                </div>
+                                <button type="submit" class="button">Envar Comentário</button>
+                            </form>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </section>
+<!--  //CONTEUDO  -->

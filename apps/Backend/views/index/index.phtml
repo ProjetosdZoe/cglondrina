@@ -1,0 +1,71 @@
+<div class="page-container">
+
+    <div class="main-content">
+
+        <div class="row">
+<!--
+            <div class="col-sm-12">
+                <a href="/services/create/"><button class="btn btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right pull-right"><i class="fa-plus"></i><span>Adicionar</span></button></a>
+            </div>
+-->
+            
+            <div class="col-sm-12">
+					
+				<div class="xe-widget xe-conversations">
+                    <div class="xe-bg-icon">
+                        <i class="fa-send"></i>
+                    </div>
+                    <div class="xe-header">
+                        <div class="xe-icon">						
+                            <i class="fa-send"></i>
+                        </div>
+                        <div class="xe-label">
+                            <h3>
+                                Assinaturas de Newsletter
+                                <small>Lista de assinatura eletrônicas para receber novidades.</small>
+                            </h3>
+                        </div>
+                    </div>
+				        
+                    <div class="xe-body">
+                        <input type="text" class="form-control form-focus-info full-width" id="search_wdg" placeholder="Search ... ">
+                        <ul class="list-unstyled" id="list-unstyled">
+                            <?php foreach($newsletters as $newsletter): ?>
+                            <li>
+                                <div class="xe-comment-entry">
+                                    <div class="xe-comment">
+
+                                        <div class="col-lg-10 col-md-9 col-sm-12">
+                                            <a href="/services/edit/0" class="xe-user-name">
+                                                <strong><?=$newsletter->name;?></strong>
+                                                <span class="badge badge-green"><?=(new DateTime($newsletter->date))->format("d-m-Y \a\s H:i:s");?></span>
+                                            </a>
+
+                                            <p><?=$newsletter->email;?></p>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-3 col-sm-12 text-right">
+                                            <a href="./index/remover/<?="{$newsletter->_}/{$csrf}";?>">
+                                                <button class="btn btn-danger btn-icon btn-icon-standalone btn-icon-standalone-right"><i class="fa-close"></i><span>Remover</span></button>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+<!--
+						<div class="xe-footer">
+							<a href="#">View All</a>
+						</div>
+-->
+                </div>
+					
+            </div>
+        </div>
+    </div>
+</div>
+<?php $this->flashSession->output(); ?>
