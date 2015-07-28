@@ -32,7 +32,36 @@
         
     };
     
+    var fileAdd = {
+        
+        objects: function() {
+            this.$parent = $("[data-inputParent]");
+            this.$result = $("[data-add-group]");
+            this.$button = $("[data-add]");
+        },
+        
+        events: function(){
+            var thiz = this;
+            this.$button
+                .on("click" , function(){
+                
+                    var item = thiz.$parent.clone().appendTo( thiz.$result );
+                    item.find("input").removeAttr("id").attr("name", Math.floor(Math.random() * 3370146 ) );
+                    item.find("label").remove();
+                    return false;
+                
+                });
+        },
+        
+        initialize: function() {
+            this.objects();
+            this.events();    
+        }
+        
+    };
+    
     modal.initialize();
+    fileAdd.initialize();
     
     
 })();

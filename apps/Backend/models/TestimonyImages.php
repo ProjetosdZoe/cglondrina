@@ -2,7 +2,7 @@
 
 namespace Backend\Models;
 
-class TestemonyImages extends \Phalcon\Mvc\Model
+class TestimonyImages extends \Phalcon\Mvc\Model
 {
 
     public function getSource()

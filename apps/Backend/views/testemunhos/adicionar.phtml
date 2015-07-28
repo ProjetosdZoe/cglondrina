@@ -2,13 +2,13 @@
 
     <div class="main-content">
            
-        <form action="/admin/artigos/criar" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+        <form action="/admin/testemunhos/criar" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
             
             <div class="page-title">
 
                 <div class="title-env">
-                    <h1 class="title">Cadastre um Artigo</h1>
-                    <p class="description">Cadastre um novo Artigo.</p>
+                    <h1 class="title">Cadastre um Testemunho</h1>
+                    <p class="description">Cadastre um novo Testemunho.</p>
                 </div>
 
                 <div class="breadcrumb-env">
@@ -27,7 +27,7 @@
 
                             <div class="row">
                                
-                                <div class="col-md-12" data-resize="10">
+                                <div class="col-md-12">
                                    
                                     <div class="form-group">
                                        <label class="control-label"><strong>Título</strong></label>
@@ -35,22 +35,25 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                       <label class="control-label"><strong>Categoria</strong></label>
-                                       <?=$form->render('category');?>
+                                       <label class="control-label"><strong>Autor</strong></label>
+                                       <?=$form->render('author');?>
                                     </div>
                                     
-                                    <div class="form-group">
-                                       <label class="control-label"><strong>Imagem De Destaque</strong></label>
+                                    <div class="form-group" data-inputParent >
+                                       <label class="control-label"><strong>Imagens</strong></label>
                                        <?=$form->render('file');?>
                                     </div>
                                     
-                                </div>
-                                
-                                <div class="hidden" data-resize="2">
-                                   
-                                    <label class="control-label"><strong>Pre-Visualização</strong></label>
-                                    <img src="//placehold.it/300" alt="" class="img-responsive img-thumbnail preview ">
-
+                                    <div  data-add-group >
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <button class="btn btn-purple btn-icon btn-icon-standalone btn-icon-standalone-right pull-right" type="button" data-add >
+                                            <i class="fa-plus"></i><span>Adicionar Campo de Imagem</span>
+                                        </button>
+                                    </div>
+                                    
                                 </div>
                                 
                             </div>

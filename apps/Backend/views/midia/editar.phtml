@@ -1,0 +1,75 @@
+<div class="page-container">
+
+    <div class="main-content">
+           
+        <form action="/admin/agenda/alterar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+            
+            <div class="page-title">
+
+                <div class="title-env">
+                    <h1 class="title">Altere uma Agenda</h1>
+                    <p class="description">Altere as informações da agenda.</p>
+                </div>
+
+                <div class="breadcrumb-env">
+                    <button class="btn btn-success btn-lg" type="submit" name="submit"> Alterar </button>
+                    <?=$form->render('csrf');?>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-10">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                               <label class="control-label"><strong>Título</strong></label>
+                               <?=$form->render('title');?>
+                            </div>
+                            <div class="form-group" style="position: relative" id="datepicker-container">
+                               <label class="control-label"><strong>Data de Ocorrência</strong></label>
+                               <?=$form->render('date');?>
+                            </div>
+                            <div class="form-group" style="position: relative" id="timepicker-container">
+                               <label class="control-label"><strong>Hora de Ocorrência</strong></label>
+                               <?=$form->render('time');?>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label"><strong>Imagem de Destaque</strong></label>
+                               <?=$form->render('file');?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-2">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label class="control-label"><strong>Pre-Visualização:</strong></label><br>
+                                <img src="/assets/frontend/images/agendas/<?=$image;?>" alt="" class="img-responsive img-thumbnail preview">
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+                
+            
+        </form>
+
+    </div>
+
+</div>
+
+
+<?php $this->flashSession->output(); ?>

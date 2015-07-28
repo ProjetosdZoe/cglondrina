@@ -2,13 +2,13 @@
 
     <div class="main-content">
            
-        <form action="/admin/artigos/alterar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+        <form action="/admin/testemunhos/alterar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
             
             <div class="page-title">
 
                 <div class="title-env">
-                    <h1 class="title">Altere um Artigo</h1>
-                    <p class="description">Altere as informações do  Artigo.</p>
+                    <h1 class="title">Altere um Testemunho</h1>
+                    <p class="description">Altere as informações do Testemunho.</p>
                 </div>
 
                 <div class="breadcrumb-env">
@@ -27,7 +27,7 @@
 
                             <div class="row">
                                
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                    
                                     <div class="form-group">
                                        <label class="control-label"><strong>Título</strong></label>
@@ -35,22 +35,25 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                       <label class="control-label"><strong>Categoria</strong></label>
-                                       <?=$form->render('category');?>
+                                       <label class="control-label"><strong>Autor</strong></label>
+                                       <?=$form->render('author');?>
                                     </div>
                                     
-                                    <div class="form-group">
-                                       <label class="control-label"><strong>Imagem De Destaque</strong></label>
+                                    <div class="form-group" data-inputParent >
+                                       <label class="control-label"><strong>Imagens</strong></label>
                                        <?=$form->render('file');?>
                                     </div>
                                     
-                                </div>
-                                
-                                <div class="col-md-2">
-                                   
-                                    <label class="control-label"><strong>Pre-Visualização</strong></label>
-                                    <img src="/assets/frontend/images/articles/<?=$image;?>" alt="" class="img-responsive img-thumbnail preview ">
-
+                                    <div  data-add-group >
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <button class="btn btn-purple btn-icon btn-icon-standalone btn-icon-standalone-right pull-right" type="button" data-add >
+                                            <i class="fa-plus"></i><span>Adicionar Campo de Imagem</span>
+                                        </button>
+                                    </div>
+                                    
                                 </div>
                                 
                             </div>
@@ -65,9 +68,39 @@
                 </div>
 
             </div>
-                
             
         </form>
+        
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="row">
+
+                            <?php foreach($images as $image): ?>
+                                <div class="col-md-3">
+
+                                    <figure>
+                                        <img src="/assets/frontend/images/testimonies/<?=$image->image;?>" class="full-width" height="210">
+                                    </figure>
+                                    <a href="/admin/testemunhos/rmi/<?="{$image->_}/{$this->dispatcher->getParam(0)}/{$csrf}";?>">
+                                        <button class="btn btn-danger btn-icon btn-icon-standalone btn-lg pull-right full-width"><i class="fa-close"></i><span>Remover</span></button>
+                                    </a>
+
+                                 </div>
+                            <?php endforeach; ?>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 

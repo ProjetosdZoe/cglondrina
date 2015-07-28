@@ -2,9 +2,10 @@
 
 namespace Backend\Controllers;
 
-use Backend\Models\Testimonies         as Testimonies,
-    Backend\Models\TestimonyImages     as TestimonyImages,
-    Backend\Models\TestimonyComments   as TestimonyComments;
+use Backend\Models\Audios         as Audios,
+    Backend\Models\Videos         as Videos,
+    Backend\Models\Albums         as Albums,
+    Backend\Models\AlbumImages    as AlbumImages;
 
 use Phalcon\Forms\Form,
     Phalcon\Forms\Element\Text,
@@ -12,14 +13,14 @@ use Phalcon\Forms\Form,
     Phalcon\Forms\Element\Textarea,
     Phalcon\Forms\Element\Hidden;
 
-class TestemunhosController extends ControllerBase
+class MidiaController extends ControllerBase
 {
     # CHECK IF: SESSION IS OK , IS POST , CSRF TOKEN ( Cross-Site Request Forgery )
 
-    public function indexAction()
+    public function albumsAction()
     {
         
-        $this->view->setVar('testimonies', Testimonies::find() );
+        $this->view->setVar('albums', Albums::find() );
         $this->view->setVar('csrf', $this->csrf->token);
     }
     
