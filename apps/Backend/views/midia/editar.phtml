@@ -2,13 +2,13 @@
 
     <div class="main-content">
            
-        <form action="/admin/agenda/alterar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+        <form action="/admin/midia/alterar/<?="{$this->dispatcher->getParam(0)}/{$this->dispatcher->getParam(1)}";?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
             
             <div class="page-title">
 
                 <div class="title-env">
-                    <h1 class="title">Altere uma Agenda</h1>
-                    <p class="description">Altere as informações da agenda.</p>
+                    <h1 class="title">Cadastre uma Mídia</h1>
+                    <p class="description">Cadastre uma noda mídia.</p>
                 </div>
 
                 <div class="breadcrumb-env">
@@ -20,42 +20,55 @@
 
             <div class="row">
 
-                <div class="col-sm-10">
+                <div class="col-sm-12">
 
                     <div class="panel panel-default">
                         <div class="panel-body">
+                            
+                            <?php if ( $this->dispatcher->getParam(0) === "album" ): ?>
 
-                            <div class="form-group">
-                               <label class="control-label"><strong>Título</strong></label>
-                               <?=$form->render('title');?>
-                            </div>
-                            <div class="form-group" style="position: relative" id="datepicker-container">
-                               <label class="control-label"><strong>Data de Ocorrência</strong></label>
-                               <?=$form->render('date');?>
-                            </div>
-                            <div class="form-group" style="position: relative" id="timepicker-container">
-                               <label class="control-label"><strong>Hora de Ocorrência</strong></label>
-                               <?=$form->render('time');?>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label"><strong>Imagem de Destaque</strong></label>
-                               <?=$form->render('file');?>
-                            </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group" data-inputParent >
+                                   <label class="control-label"><strong>Imagem de destaque</strong></label>
+                                   <?=$form->render('file');?>
+                                </div>
 
-                        </div>
-                    </div>
+                                <div  data-add-group >
+                                
+                                    <div class="form-group" >
+                                       <label class="control-label"><strong>Imagens do album:</strong></label>
+                                    </div>
 
-                </div>
+                                </div>
 
-                <div class="col-sm-2">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-
-                            <div class="form-group">
-                                <label class="control-label"><strong>Pre-Visualização:</strong></label><br>
-                                <img src="/assets/frontend/images/agendas/<?=$image;?>" alt="" class="img-responsive img-thumbnail preview">
-                            </div>
+                                <div class="form-group">
+                                    <button class="btn btn-purple btn-icon btn-icon-standalone btn-icon-standalone-right pull-right" type="button" data-add >
+                                        <i class="fa-plus"></i><span>Adicionar Campo de Imagem</span>
+                                    </button>
+                                </div>
+                                
+                            <?php elseif ( $this->dispatcher->getParam(0) === "audio" ): ?>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Arquivo</strong></label>
+                                   <?=$form->render('file');?>
+                                </div>
+                            <?php elseif ( $this->dispatcher->getParam(0) === "video" ): ?>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('url');?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                     </div>
@@ -63,9 +76,38 @@
                 </div>
 
             </div>
-                
             
         </form>
+               
+            <?php if ( $this->dispatcher->getParam(0) === "album" ): ?>
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        
+                            <div class="row">
+                                <?php foreach($images as $image): ?>
+                                <div class="col-md-3">
+
+                                    <figure>
+                                        <img src="/assets/frontend/images/midia/<?=$image->image;?>" class="full-width" height="210">
+                                    </figure>
+                                    <a href="/admin/midia/rmi/<?="{$image->_}/{$this->dispatcher->getParam(1)}/{$csrf}";?>">
+                                        <button class="btn btn-danger btn-icon btn-icon-standalone btn-lg pull-right full-width"><i class="fa-close"></i><span>Remover</span></button>
+                                    </a>
+
+                                 </div>
+                                <?php endforeach; ?>
+                            </div>                        
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <?php endif; ?>
 
     </div>
 

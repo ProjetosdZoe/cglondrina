@@ -2,7 +2,9 @@
 
 namespace Frontend\Controllers;
 
-use Frontend\Models\Newsletters as Newsletters;
+use Frontend\Models\Newsletters as Newsletters,
+    Frontend\Models\NewslettersAuthors as NewslettersAuthors,
+    Frontend\Models\NewslettersCategories as NewslettersCategories;
 
 class GcemController extends ControllerBase
 {
@@ -24,8 +26,26 @@ class GcemController extends ControllerBase
              ->addCss('assets/frontend/style/blog.css');
         
         $newsletters = Newsletters::find();
+        $categories = NewslettersCategories::find();
+        $authors = NewslettersAuthors::find();
         
-        $this->view->setVar("newsletters",$newsletters);
+        $this->view->setVar("categories", $categories );
+        
+        if( $this->dispatcher->getParam(0) )
+        {
+            
+            $this->view->setVar("authors", $authors );
+            
+        }
+        
+        if( $this->dispatcher->getParam(1) )
+        {
+            
+            $category = NewslettersCategories::findFirstByUrlrequest($this->dispatcher->getParam(0));
+            $authors = NewslettersAuthors::findFirstByUrlrequest($this->dispatcher->getParam(1));
+            $this->view->setVar("newsletters", Newsletters::find([ "author = '{$authors->_}' and category ='{$category->_}' " ]) );
+            
+        }
         
     }
     

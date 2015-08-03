@@ -33,7 +33,7 @@
     };
     
     var fileAdd = {
-        
+        numb: 1,
         objects: function() {
             this.$parent = $("[data-inputParent]");
             this.$result = $("[data-add-group]");
@@ -44,9 +44,10 @@
             var thiz = this;
             this.$button
                 .on("click" , function(){
-                
+                    thiz.numb = thiz.numb + 1;
                     var item = thiz.$parent.clone().appendTo( thiz.$result );
-                    item.find("input").removeAttr("id").attr("name", Math.floor(Math.random() * 3370146 ) );
+                    item.find("input#file").removeAttr("id").attr("name", Math.floor(Math.random() * 3370146 ) );
+                    item.find("input#define").val(0)
                     item.find("label").remove();
                     return false;
                 
@@ -55,13 +56,12 @@
         
         initialize: function() {
             this.objects();
-            this.events();    
+            this.events();
         }
         
     };
     
     modal.initialize();
     fileAdd.initialize();
-    
     
 })();

@@ -2,13 +2,13 @@
 
     <div class="main-content">
            
-        <form action="/admin/agenda/criar" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+        <form action="/admin/midia/criar/<?=$this->dispatcher->getParam(0);?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
             
             <div class="page-title">
 
                 <div class="title-env">
-                    <h1 class="title">Cadastre uma Agenda</h1>
-                    <p class="description">Cadastre uma nova Agenda.</p>
+                    <h1 class="title">Cadastre uma Mídia</h1>
+                    <p class="description">Cadastre uma noda mídia.</p>
                 </div>
 
                 <div class="breadcrumb-env">
@@ -20,42 +20,55 @@
 
             <div class="row">
 
-                <div class="col-sm-10">
+                <div class="col-sm-12">
 
                     <div class="panel panel-default">
                         <div class="panel-body">
+                           
+                            <?php if ( $this->dispatcher->getParam(0) === "album" ): ?>
 
-                            <div class="form-group">
-                               <label class="control-label"><strong>Título</strong></label>
-                               <?=$form->render('title');?>
-                            </div>
-                            <div class="form-group" style="position: relative" id="datepicker-container">
-                               <label class="control-label"><strong>Data de Ocorrência</strong></label>
-                               <?=$form->render('date');?>
-                            </div>
-                            <div class="form-group" style="position: relative" id="timepicker-container">
-                               <label class="control-label"><strong>Hora de Ocorrência</strong></label>
-                               <?=$form->render('time');?>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label"><strong>Imagem de Destaque</strong></label>
-                               <?=$form->render('file');?>
-                            </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group" data-inputParent >
+                                   <label class="control-label"><strong>Imagem de destaque:</strong></label>
+                                   <?=$form->render('file');?>
+                                </div>
 
-                        </div>
-                    </div>
+                                <div  data-add-group >
+                                
+                                    <div class="form-group"  >
+                                       <label class="control-label"><strong>Imagens do Album:</strong></label>
+                                    </div>
 
-                </div>
+                                </div>
 
-                <div class="col-sm-2">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-
-                            <div class="form-group">
-                                <label class="control-label"><strong>Pre-Visualização:</strong></label><br>
-                                <img src="//placehold.it/300" alt="" class="img-responsive img-thumbnail preview">
-                            </div>
+                                <div class="form-group">
+                                    <button class="btn btn-purple btn-icon btn-icon-standalone btn-icon-standalone-right pull-right" type="button" data-add >
+                                        <i class="fa-plus"></i><span>Adicionar Campo de Imagem</span>
+                                    </button>
+                                </div>
+                                
+                            <?php elseif ( $this->dispatcher->getParam(0) === "audio" ): ?>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Arquivo</strong></label>
+                                   <?=$form->render('file');?>
+                                </div>
+                            <?php elseif ( $this->dispatcher->getParam(0) === "video" ): ?>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('title');?>
+                                </div>
+                                <div class="form-group">
+                                   <label class="control-label"><strong>Título</strong></label>
+                                   <?=$form->render('url');?>
+                                </div>
+                            <?php endif; ?>
 
                         </div>
                     </div>

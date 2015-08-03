@@ -46,6 +46,7 @@ class RequestController extends ControllerBase
             
             'modal-form'     =>  true,
             'remove'         =>  true,
+            'method'         =>  "post",
             'action'         =>  "/admin/artigos/rmc/{$category->_}",
             'contents'       =>  $form->render("category").$form->render("csrf"),
         ]);
@@ -80,6 +81,7 @@ class RequestController extends ControllerBase
 
             echo (new Mustache)->render(file_get_contents($_SERVER['DOCUMENT_ROOT']."/templates/modals.tpl"),[ 
                 'modal-form'     =>  true,
+                'method'         =>  "post",
                 'action'         =>  "/admin/artigos/edc/{$category->_}",
                 'contents'       =>  $form->render("title").$form->render("csrf"),
             ]);

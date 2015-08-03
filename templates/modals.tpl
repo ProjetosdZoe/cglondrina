@@ -10,7 +10,7 @@
 
 
 {{#modal-form}}
-<form action="{{action}}" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+<form action="{{action}}" method="{{method}}" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate" >
     <div class="modal-body">
             {{{contents}}}
     </div>

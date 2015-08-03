@@ -16,9 +16,8 @@ class MidiaController extends ControllerBase
              ->addCss('assets/frontend/style/secondary.page.css')
              ->addCss('assets/frontend/style/blog.css');
         
-        $albums = Albums::find();
-        
-        $this->view->setVar("albums", $albums);
+        $this->view->setVar("albums", Albums::find() );
+        $this->view->setVar("image", $albums);
     }
     
     public function AlbumAction()

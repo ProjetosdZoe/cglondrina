@@ -1,0 +1,86 @@
+<div class="page-container">
+
+    <div class="main-content">
+           
+        <form action="/admin/gcem/alterar/<?="{$this->dispatcher->getParam(0)}/{$this->dispatcher->getParam(1)}";?>" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+            
+            <div class="page-title">
+
+                <div class="title-env">
+                    <h1 class="title">Cadastre Informações de Boletim</h1>
+                    <p class="description"></p>
+                </div>
+
+                <div class="breadcrumb-env">
+                    <button class="btn btn-success btn-lg" type="submit" name="submit"> Cadastrar </button>
+                    <?=$form->render('csrf');?>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="row">
+                               
+                                <div class="col-md-12">
+                                   
+                                    <?php if($form->has('title')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Título</strong></label>
+                                       <?=$form->render('title');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('categories')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Categoria do Boletim</strong></label>
+                                       <?=$form->render('categories');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('authors')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Autor do Boletim</strong></label>
+                                       <?=$form->render('authors');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('name')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Nome do autor</strong></label>
+                                       <?=$form->render('name');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('file')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Foto do Autor</strong></label>
+                                       <?=$form->render('file');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+                
+            
+        </form>
+
+    </div>
+
+</div>
+
+
+<?php $this->flashSession->output(); ?>

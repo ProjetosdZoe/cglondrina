@@ -17,9 +17,34 @@
 <section class="blog-list">
     <div class="container">
         <div class="row">
+          
+           <?php if(!$this->dispatcher->getParam(0) ){ foreach( $categories  as $category ): ?>
+           <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="blog-block">
+                    <div class="contents">
+                        <a class="name uppercase" href="/gcem/boletins/<?=$category->urlrequest;?>" ><?=$category->title;?></a>
+                        <div class="position"></div>
+                    </div><a class="button full-width" href="/gcem/boletins/<?=$category->urlrequest;?>" >Ver Autores</a>
+                    <hr>                            
+                </div>
+            </div>
+           <?php endforeach; }?>
+           
+           <?php if($this->dispatcher->getParam(0) && !$this->dispatcher->getParam(1) ){ foreach( $authors  as $author ): ?>
+           <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="blog-block">
+                    <div class="contents">
+                        <a class="name uppercase" href="/gcem/boletins/<?="{$this->dispatcher->getParam(0)}/{$author->urlrequest}";?>" ><?=$author->name;?></a>
+                        <div class="position"></div>
+                    </div><a class="button full-width" href="/gcem/boletins/<?="{$this->dispatcher->getParam(0)}/{$author->urlrequest}";?>" >Ver Boletins</a>
+                    <hr>                            
+                </div>
+            </div>
+           <?php endforeach; }?>
 
-           <?php foreach( $newsletters as $newsletter ): ?>
-            <div class="col-lg-6 col-md-6 col-sm-12">
+          
+           <?php if(isset($newsletters)){ foreach( $newsletters  as $newsletter ): ?>
+           <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="blog-block">
                     <div class="date">
                         <div class="day"><?=(new DateTime($newsletter->date))->format("d");?></div>
@@ -52,7 +77,7 @@
                     <hr>                            
                 </div>
             </div>
-            <?php endforeach; ?>
+           <?php endforeach; }?>
             
         </div>
     </div>
