@@ -4,6 +4,7 @@
     <div class="bread-crumbs uppercase">
         <a href="/">Home</a>
         <a href="/gcem">Sobre o GCEM</a>
+        <a href="/gcem/boletins">Boletins</a>
         <a href="/gcem/mapa">gcem mais próximo</a>
         <a href="/gcem/ctl">ctl</a>
     </div>
@@ -18,9 +19,9 @@
     <div class="container">
         <div class="row">
           
-           <?php if(!$this->dispatcher->getParam(0) ){ foreach( $categories  as $category ): ?>
+           <?php if( !$this->dispatcher->getParam(0) ){ foreach( $categories  as $category ): ?>
            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="blog-block">
+                <div class="blog-block" style="padding-left:0;">
                     <div class="contents">
                         <a class="name uppercase" href="/gcem/boletins/<?=$category->urlrequest;?>" ><?=$category->title;?></a>
                         <div class="position"></div>
@@ -30,9 +31,9 @@
             </div>
            <?php endforeach; }?>
            
-           <?php if($this->dispatcher->getParam(0) && !$this->dispatcher->getParam(1) ){ foreach( $authors  as $author ): ?>
+           <?php if( $this->dispatcher->getParam(0) && !$this->dispatcher->getParam(1) ){ foreach( $authors  as $author ): ?>
            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="blog-block">
+                <div class="blog-block" style="padding-left:0;">
                     <div class="contents">
                         <a class="name uppercase" href="/gcem/boletins/<?="{$this->dispatcher->getParam(0)}/{$author->urlrequest}";?>" ><?=$author->name;?></a>
                         <div class="position"></div>
@@ -78,6 +79,17 @@
                 </div>
             </div>
            <?php endforeach; }?>
+            
+            <?php if( isset($newsletters) && count($newsletters) <= 0 ): ?>
+            <div class="col-md-12">
+
+                <div class="work-title center">
+                    <div class="name">Não Existem Boltetins Cadastrados!</div>
+                    <div class="position"></div>
+                </div>
+                
+            </div>
+            <?php endif; ?>
             
         </div>
     </div>
