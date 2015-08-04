@@ -3,7 +3,8 @@
 namespace Frontend\Controllers;
 
 use Frontend\Models\Testimonies as Testimonies,
-    Frontend\Models\TestimonyComments as TestimonyComments;
+    Frontend\Models\TestimonyComments as TestimonyComments,
+    Frontend\Models\TestimonyImages as TestimonyImages;
 
 class TestemunhosController extends ControllerBase
 {
@@ -42,6 +43,7 @@ class TestemunhosController extends ControllerBase
 
         $this->view->setVar("testimony", $testimony);
         $this->view->setVar("comments", $comments);
+        $this->view->setVar("images", TestimonyImages::findByPost($testimony->_) );
             
     }
 

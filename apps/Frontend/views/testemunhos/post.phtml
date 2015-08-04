@@ -42,6 +42,15 @@
                                 ?>
                                 </div>
                             </div>
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <?php foreach($images as $image): ?>
+                                    <li>
+                                        <img src="/assets/frontend/images/testimonies/<?=$image->image;?>" alt="<?=$testimony->title;?>" class="full-width" height="500">
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                             <a class="name"><?=$testimony->title;?></a>
                             <div class="position">Enviado Por: <?=$testimony->author;?></div>
                             <?=$testimony->text;?>   

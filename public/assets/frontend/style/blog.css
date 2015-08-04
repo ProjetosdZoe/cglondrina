@@ -62,7 +62,7 @@
 	.blog-block .flex-next:before,
 	.blog-block .flex-prev:before {
 	    color: #fff;
-	    content: "";
+	    content: "\f054";
 	    font-family: "FontAwesome";
 	    font-size: 30px;
 	    left: 0;
