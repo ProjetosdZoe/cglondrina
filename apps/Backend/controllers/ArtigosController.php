@@ -6,6 +6,8 @@ use Backend\Models\Articles            as Articles,
     Backend\Models\ArticleComments     as ArticleComments,
     Backend\Models\ArticleCategories   as ArticleCategories;
 
+use Mustache_Engine as Mustache;
+
 use Phalcon\Forms\Form,
     Phalcon\Forms\Element\Text,
     Phalcon\Forms\Element\File,
@@ -264,8 +266,6 @@ class ArtigosController extends ControllerBase
         endif;
     }
     
-    ## MODAL REQUEST ACTIONS
-    
     public function nwcAction()
     {
         
@@ -294,56 +294,165 @@ class ArtigosController extends ControllerBase
         endif;
         
     }
+  
+    # MODAL
     
-    public function rmcAction()
+    public function ModalAction()
     {
-        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->request->getPost('csrf') === $this->session->get("CSRFToken") ):
         
-        ArticleCategories::findFirst($this->dispatcher->getParam(0))->delete();
+        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") ): 
         
-        $articles = Articles::find([
-            "category = {$this->dispatcher->getParam(0)}"
-        ]);
-        foreach($articles as $article)
-        {
-            $article->category = $this->request->getPost('category');
-            $article->update();
-        }
+            $category = ArticleCategories::findFirst($this->request->getPost('id'));
+
+            $form = new Form();
         
-        $this->flashSession->error("<div class='title'>Removido COM SUCESSO !</div> <div class='msg'>Categoria removida com sucesso !</div> ");
-        return $this->response->redirect("admin/artigos");
-        
-        else:
-            return $this->response->redirect("admin/artigos");
-        
-        endif;
-    }
-    
-    public function edcAction()
-    {
-        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->request->getPost('csrf') === $this->session->get("CSRFToken") ):
-        
-        $category = ArticleCategories::findFirst($this->dispatcher->getParam(0));
-        
-            if(Articles::findFirstByUrlrequest( $this->URLGenerator($this->request->getPost("title")) ))
+            if( $this->dispatcher->getParam(1) === "remove" )
             {
-                $category->urlrequest = $this->URLGenerator( $this->request->getPost("title").(new \DateTime())->format("-d-m-Y") );
+                
+                if( $this->dispatcher->getParam(0) === "category" )
+                {
+                    $form->add(new Select("select", ArticleCategories::find(), [
+                        'id'    => "select",
+                        'class' => "form-control",
+                        'using' => ['_', 'name'],
+                    ]));
+                    
+                    $txt = "Escolha uma categoria para que quais quer artigos cadastradas na categoria de <b><u>{$category->name}</u></b> sejam alteradas.";
+                    $isremove = true;
+
+                }
+                
             }
-            else
+            if( $this->dispatcher->getParam(1) === "modify" )
             {
-                $category->urlrequest = $this->URLGenerator($this->request->getPost("title"));
+             
+                if( $this->dispatcher->getParam(0) === "category" )
+                {
+                    
+                    $form->add(new Text("name" ,[
+                        'placeholder'           => "Título da Categoria",
+                        'class'                 => "form-control",
+                        'id'                    => "name",
+                        'data-validate'         => "required",
+                        'data-message-required' => "* Este campo é obrigatório.",
+                        'value'                 => $category->name
+                    ]));                    
+                    
+                    $txt = "Escolha um novo título para a categoria : <b><u>{$category->name}</u></b>.";
+                    $isremove = false;
+
+                }
+                
+            }
+        
+            $form->add(new Hidden("action" ,[
+                'id'                    => "action",
+                'value'                 => $this->dispatcher->getParam(1)
+            ]));
+        
+            $form->add(new Hidden("type" ,[
+                'id'                    => "type",
+                'value'                 => $this->dispatcher->getParam(0)
+            ]));
+        
+            $form->add(new Hidden("csrf" ,[
+                'id'                    => "csrf",
+                'value'                 => $this->session->get("CSRFToken")
+            ]));
+        
+            $form->add(new Hidden("id" ,[
+                'id'                    => "id",
+                'value'                 => $this->request->getPost('id')
+            ]));
+        
+            foreach($form as $element)
+            {
+                @$cont .= "{$element->render($element->getName())}";
             }
 
-            $category->name   = $this->request->getPost("title");
-        $category->update();
+            echo (new Mustache)->render(file_get_contents($_SERVER['DOCUMENT_ROOT']."/templates/modals.tpl"),[ 
+                'modal-form'     =>  true,
+                'info'           =>  true,
+                'title'          =>  'Atenção:',
+                'text'           =>  $txt,
+                'remove'         =>  $isremove,
+                'method'         =>  "post",
+                'action'         =>  "/admin/artigos/modalF/",
+                'contents'       =>  $cont,
+            ]);
         
-        $this->flashSession->success("<div class='title'>ALTERADO COM SUCESSO !</div> <div class='msg'>Categoria alterada com sucesso !</div> ");
+        
+            $this->view->disable();
+
+        else:
+            return $this->response->redirect("/admin/gcem");
+        
+        endif;
+
+    }
+    
+    public function ModalFAction()
+    {
+        
+        if ( $this->request->isPost() && $this->session->has("secure_id") && $this->session->has("CSRFToken") && $this->request->getPost('csrf') === $this->session->get("CSRFToken") ):
+        
+            
+            if( $this->request->getPost('action') === "remove" )
+            {
+                
+                if( $this->request->getPost('type') === "category" )
+                {
+                    
+                    ArticleCategories::findFirst($this->request->getPost('id'))->delete();
+        
+                    $articles = Articles::findByCategory($this->request->getPost('id'));
+                    
+                    foreach($articles as $article)
+                    {
+                        $article->category = $this->request->getPost('select');
+                        $article->update();
+                    }
+                     
+                    $this->flashSession->error("<div class='title'>REMOVIDO COM SUCESSO !</div> <div class='msg'>Categoria de artigo removido com sucesso !</div> ");
+
+                }
+                
+            }
+        
+            if( $this->request->getPost('action') === "modify" )
+            {
+             
+                if( $this->request->getPost('type') === "category" )
+                {
+                   $category = ArticleCategories::findFirst($this->request->getPost("id"));
+        
+                        if(Articles::findFirstByUrlrequest( $this->URLGenerator($this->request->getPost("name")) ))
+                        {
+                            $category->urlrequest = $this->URLGenerator( $this->request->getPost("name").(new \DateTime())->format("-d-m-Y") );
+                        }
+                        else
+                        {
+                            $category->urlrequest = $this->URLGenerator($this->request->getPost("name"));
+                        }
+
+                        $category->name   = $this->request->getPost("name");
+                    $category->update();
+                     
+                    $this->flashSession->success("<div class='title'>ALTERADO COM SUCESSO !</div> <div class='msg'>Categoria de artigo alterado com sucesso !</div> ");
+                }
+                
+            }
+        
         return $this->response->redirect("admin/artigos");
+        
+        $this->view->disable();
         
         else:
             return $this->response->redirect("admin/artigos");
         
         endif;
+        
     }
+    
 
 }
