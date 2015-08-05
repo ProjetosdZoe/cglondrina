@@ -1,0 +1,79 @@
+<div class="page-container">
+
+    <div class="main-content">
+           
+        <form action="/admin/settings/update" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" class="form-horizontal validate" novalidate="novalidate">
+            
+            <div class="page-title">
+
+                <div class="title-env">
+                    <h1 class="title">Altere Informações de Sua Conta</h1>
+                    <p class="description"></p>
+                </div>
+
+                <div class="breadcrumb-env">
+                    <button class="btn btn-success btn-lg" type="submit" name="submit"> Alterar </button>
+                    <?=$form->render('csrf');?>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div class="row">
+                               
+                                <div class="col-md-12">
+                                   
+                                    <?php if($form->has('name')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Nome Completo</strong></label>
+                                       <?=$form->render('name');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('email')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>E-Mail</strong></label>
+                                       <?=$form->render('email');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('username')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Usuário de Acesso</strong></label>
+                                       <?=$form->render('username');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($form->has('password')): ?>
+                                    <div class="form-group">
+                                       <label class="control-label"><strong>Senha de Acesso ( Nova Senha )</strong></label>
+                                       <?=$form->render('password');?>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+                
+            
+        </form>
+
+    </div>
+
+</div>
+
+
+<?php $this->flashSession->output(); ?>
