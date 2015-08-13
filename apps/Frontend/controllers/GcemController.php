@@ -25,9 +25,9 @@ class GcemController extends ControllerBase
              ->addCss('assets/frontend/style/secondary.page.css')
              ->addCss('assets/frontend/style/blog.css');
         
-        $newsletters = Newsletters::find();
+        $newsletters = Newsletters::find([ 'order' => 'date' ]);
         $categories = NewslettersCategories::find();
-        $authors = NewslettersAuthors::find();
+        $authors = NewslettersAuthors::find([ 'order' => 'name' ]);
         
         $this->view->setVar("categories", $categories );
         

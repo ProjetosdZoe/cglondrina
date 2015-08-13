@@ -15,7 +15,9 @@ class IndexController extends ControllerBase
     public function indexAction()
     {
         
-        $banners = Banners::find();
+        $banners = Banners::find([
+            'order' => '_ DESC' 
+        ]);
         $members = Members::find([
             'order' => 'name'
         ]);

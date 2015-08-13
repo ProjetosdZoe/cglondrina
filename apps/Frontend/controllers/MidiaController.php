@@ -16,7 +16,7 @@ class MidiaController extends ControllerBase
              ->addCss('assets/frontend/style/secondary.page.css')
              ->addCss('assets/frontend/style/blog.css');
         
-        $this->view->setVar("albums", Albums::find() );
+        $this->view->setVar("albums", Albums::find([ 'order' => 'date' ]) );
         $this->view->setVar("image", $albums);
     }
     
@@ -39,7 +39,7 @@ class MidiaController extends ControllerBase
              ->addCss('assets/frontend/style/secondary.page.css')
              ->addCss('assets/frontend/style/blog.css');
         
-        $videos = Videos::find();
+        $videos = Videos::find([ 'order' => 'date' ]);
         
         $this->view->setVar("videos", $videos);
     }
@@ -50,7 +50,7 @@ class MidiaController extends ControllerBase
              ->addCss('assets/frontend/style/secondary.page.css')
              ->addCss('assets/frontend/style/blog.css');
         
-        $audios = Audios::find();
+        $audios = Audios::find([ 'order' => 'date' ]);
         
         $this->view->setVar("audios", $audios);
     }

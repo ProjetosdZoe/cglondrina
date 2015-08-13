@@ -8,7 +8,7 @@
 
 - sudo apt-get update
 
-- sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 mysql-server php5-mysql php5-phalcon
+- sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 mysql-server php5-mysql php5-curl php5-phalcon 
 
 - sudo a2enmod rewrite
 
@@ -19,12 +19,18 @@
 
 - sudo service apache2 restart
 
+- cd ~
+- curl -sS https://getcomposer.org/installer | php
+- sudo mv composer.phar /usr/local/bin/composer
+
 - cd /var/
 - sudo rm -rf www/
 - sudo mkdir www/
 - sudo chmod -R 777 www/
 - cd www/
 - git clone https://github.com/ProjetosdZoe/cglondrina .
+- cd libraries/
+- sudo composer install
 
 # Important Informations 
 

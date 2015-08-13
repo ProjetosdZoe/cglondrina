@@ -1430,6 +1430,13 @@ hr{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    border: 0px solid #c1e1bd;
+}
+
+.offer-wrapper:hover{
+    cursor: pointer;
+    border: 6px solid #c1e1bd;
 }
 
 .offer-wrapper h3.offer-title {

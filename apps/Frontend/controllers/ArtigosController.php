@@ -27,7 +27,7 @@ class ArtigosController extends ControllerBase
 
         FROM Frontend\Models\Articles
         LEFT JOIN Frontend\Models\ArticleCategories ON Frontend\Models\Articles.category = Frontend\Models\ArticleCategories._
-        ORDER BY Frontend\Models\Articles._ DESC
+        ORDER BY Frontend\Models\Articles.date DESC
         LIMIT 3 OFFSET 0
         ");
 
